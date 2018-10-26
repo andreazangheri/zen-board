@@ -1,0 +1,52 @@
+{
+  "name": "ZenBoard",
+  "productName": "ZenBoard",
+  "version": "0.0.1",
+  "description": "Zen Board for ZenHub",
+  "main": "index.js",
+  "scripts": {
+    "test": "",
+    "start": "electron .",
+    "prettier-watch": "onchange '**/*.{js,jsx,css}' -- prettier --write \"*.{js,jsx,css}\"",
+    "lint": "eslint \"**/*.{js,jsx}\" --quiet"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/typerror/zen-board.git"
+  },
+  "keywords": [
+    "zenhub",
+    "zen-board",
+    "zen-boards",
+    "agile",
+    "scrum",
+    "burndown",
+    "reports"
+  ],
+  "author": "typerror <scrivi@andreazangheri.it>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/typerror/zen-board/issues"
+  },
+  "homepage": "https://github.com/typerror/zen-board#readme",
+  "devDependencies": {
+    "electron": "^3.0.6",
+    "electron-builder": "^20.28.4",
+    "eslint": "^5.8.0",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "onchange": "^5.0.2",
+    "prettier": "^1.14.3"
+  },
+  "electronVersion": "3.0.6",
+  "build": {
+    "appID": "com.zenboard.zenboard"
+  },
+  "dependencies": {
+    "ajv": "^6.0.0",
+    "ajv-keywords": "^3.2.0",
+    "config": "^2.0.1",
+    "electron-config": "^1.0.0",
+    "path": "^0.12.7"
+  }
+}
