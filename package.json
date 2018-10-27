@@ -7,8 +7,14 @@
   "scripts": {
     "test": "",
     "start": "electron .",
-    "prettier-watch": "onchange '**/*.{js,jsx,css}' -- prettier --write \"*.{js,jsx,css}\"",
-    "lint": "eslint \"**/*.{js,jsx}\" --quiet"
+    "build:css": "postcss src/style.css -o src/style.css",
+    "build:js": "babel index.js -o index.js",
+    "build": "npm run build:css && npm run build:js",
+    "prettier-watch": "npm run prettier:dir && npm run prettier:subdir",
+    "prettier:dir": "onchange '**/*.{js,jsx,css}' -- prettier --write \"**/*.{js,jsx,css}\"",
+    "prettier:subdir": "onchange 'src/*.{js,jsx,css}' -- prettier --write \"src/*.{js,jsx,css}\"",
+    "lint": "eslint \"**/*.{js,jsx}\" --quiet",
+    "prod": "electron-builder -m"
   },
   "repository": {
     "type": "git",
@@ -34,19 +40,37 @@
     "electron-builder": "^20.28.4",
     "eslint": "^5.8.0",
     "eslint-config-prettier": "^3.1.0",
+    "eslint-plugin-compat": "^2.6.2",
     "eslint-plugin-prettier": "^3.0.0",
+    "gulp": "^4.0.0",
     "onchange": "^5.0.2",
     "prettier": "^1.14.3"
   },
-  "electronVersion": "3.0.6",
-  "build": {
-    "appID": "com.zenboard.zenboard"
-  },
   "dependencies": {
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
     "ajv": "^6.0.0",
     "ajv-keywords": "^3.2.0",
+    "autoprefixer": "^9.3.1",
     "config": "^2.0.1",
     "electron-config": "^1.0.0",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "postcss-cli": "^6.0.1"
+  },
+  "electronVersion": "3.0.6",
+  "build": {
+    "appId": "com.electron.zenboard",
+    "productName": "ZenBoard",
+    "copyright": "Copyright © year typerror",
+    "files": [
+      "**/*",
+      "!assets/*"
+    ],
+    "mac":{
+      "category": "public.app-category.developer-tools",
+      "icon": "assets/icon.icns",
+      "target": "default"
+    }
   }
 }
