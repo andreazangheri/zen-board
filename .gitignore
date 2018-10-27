@@ -125,3 +125,5 @@ typings/
 *.sketch
 
 dist/
+
+*.p12
