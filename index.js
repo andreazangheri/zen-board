@@ -27,7 +27,7 @@ function createWindow() {
   var url = config.get("url");
   var windowState = config.get("windowState");
   var win = new electron.BrowserWindow({
-    icon: path.join(__dirname, "static/icon.png"),
+    icon: path.join(__dirname, "assets/icon.png"),
     height: windowState.height,
     title: app.getName(),
     titleBarStyle: "standard",
@@ -39,10 +39,10 @@ function createWindow() {
     config.set("url", url);
   });
   return win;
-} // Questo metodo viene chiamato quando Electron ha finito
+}
+// Questo metodo viene chiamato quando Electron ha finito
 // l'inizializzazione ed è pronto a creare le finestre browser.
 // Alcune API possono essere utilizzate solo dopo che si verifica questo evento.
-
 app.on("ready", function() {
   win = createWindow();
   var page = win.webContents;
@@ -61,6 +61,7 @@ app.on("window-all-closed", function() {
     app.quit();
   }
 });
+
 app.on("activate", function() {
   if (!win) {
     win = createWindow();
