@@ -6,16 +6,17 @@ var fs = require("fs");
 
 var path = require("path");
 
-var config = require("./src/config");
-
-var dockMenu = require("./src/dockMenu");
+var config = require("./src/config"); //TODO dockMenu require
+//TODO mainMenu require
 
 var _require = require("electron"),
   app = _require.app,
   BrowserWindow = _require.BrowserWindow,
-  Menu = _require.Menu; // Mantiene un riferimento globale all'oggetto window, se non lo fai, la finestra sarà
+  Menu = _require.Menu,
+  shell = _require.shell; // Mantiene un riferimento globale all'oggetto window, se non lo fai, la finestra sarà
 // chiusa automaticamente quando l'oggetto JavaScript sarà garbage collected.
 
+var dockMenu;
 var win;
 
 function onClosed() {
@@ -38,10 +39,21 @@ function createWindow() {
   win.webContents.on("did-navigate-in-page", function(e, url) {
     config.set("url", url);
   });
+  setMainMenu(); //TODO: dockMenu module import —> export
+
+  dockMenu = Menu.buildFromTemplate([
+    {
+      label: "New Window",
+
+      click() {
+        createWindow();
+      }
+    }
+  ]); // Comandi dock
+
+  app.dock.setMenu(dockMenu);
   return win;
-} // Questo metodo viene chiamato quando Electron ha finito
-// l'inizializzazione ed è pronto a creare le finestre browser.
-// Alcune API possono essere utilizzate solo dopo che si verifica questo evento.
+}
 
 app.on("ready", function() {
   win = createWindow();
@@ -67,3 +79,175 @@ app.on("activate", function() {
   }
 }); // in questo file possiamo includere il codice specifico necessario
 // alla nostra app. Si può anche mettere il codice in file separati e richiederlo qui.
+//TODO: mainMenu module import —> export
+
+function setMainMenu() {
+  const topMenu = [
+    {
+      label: "ZenBoard",
+      submenu: [
+        {
+          role: "about"
+        },
+        {
+          label: "View License",
+
+          click() {
+            shell.openExternal(
+              "https://raw.githubusercontent.com/typerror/zen-board/master/LICENSE"
+            );
+          }
+        },
+        {
+          label: "Version 0.0.1",
+          enabled: false
+        },
+        {
+          //TODO: autoUpdater module
+          label: "Check for Updates...",
+
+          click() {}
+        },
+        {
+          type: "separator"
+        },
+        {
+          role: "services",
+          submenu: []
+        },
+        {
+          type: "separator"
+        },
+        {
+          role: "hide"
+        },
+        {
+          role: "hideothers"
+        },
+        {
+          role: "unhide"
+        },
+        {
+          type: "separator"
+        },
+        {
+          role: "quit"
+        }
+      ]
+    },
+    {
+      label: "Edit",
+      submenu: [
+        {
+          role: "undo"
+        },
+        {
+          role: "redo"
+        },
+        {
+          type: "separator"
+        },
+        {
+          role: "cut"
+        },
+        {
+          role: "copy"
+        },
+        {
+          role: "paste"
+        },
+        {
+          role: "pasteandmatchstyle"
+        },
+        {
+          role: "delete"
+        },
+        {
+          role: "selectall"
+        }
+      ]
+    },
+    {
+      label: "View",
+      submenu: [
+        {
+          role: "reload"
+        },
+        {
+          role: "forcereload"
+        },
+        {
+          role: "toggledevtools"
+        },
+        {
+          type: "separator"
+        },
+        {
+          role: "resetzoom"
+        },
+        {
+          role: "zoomin"
+        },
+        {
+          role: "zoomout"
+        },
+        {
+          type: "separator"
+        },
+        {
+          role: "togglefullscreen"
+        }
+      ]
+    },
+    {
+      role: "window",
+      submenu: [
+        {
+          label: "New Window",
+          accelerator: "Cmd+N",
+
+          click() {
+            createWindow();
+          }
+        },
+        {
+          role: "minimize"
+        },
+        {
+          role: "close"
+        }
+      ]
+    },
+    {
+      role: "help",
+      submenu: [
+        {
+          label: "Learn More",
+
+          click() {
+            shell.openExternal(
+              "https://github.com/typerror/zen-board#readme.md"
+            );
+          }
+        },
+        {
+          label: "Documentation",
+
+          click() {
+            shell.openExternal(
+              "https://github.com/typerror/zen-board#readme.md"
+            );
+          }
+        },
+        {
+          label: "Search Issues",
+
+          click() {
+            shell.openExternal("https://github.com/typerror/zen-board/issues");
+          }
+        }
+      ]
+    }
+  ];
+  Menu.setApplicationMenu(Menu.buildFromTemplate(topMenu));
+}
