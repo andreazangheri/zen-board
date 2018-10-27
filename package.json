@@ -55,22 +55,37 @@
     "autoprefixer": "^9.3.1",
     "config": "^2.0.1",
     "electron-config": "^1.0.0",
+    "electron-updater": "^3.1.5",
     "path": "^0.12.7",
     "postcss-cli": "^6.0.1"
   },
   "electronVersion": "3.0.6",
   "build": {
     "appId": "com.electron.zenboard",
+    "asar": true,
     "productName": "ZenBoard",
-    "copyright": "Copyright © year typerror",
+    "artifactName": "${productName}-${version}.${ext}",
+    "buildVersion": "271018",
+    "copyright": "Copyright © 2018 typerror",
     "files": [
       "**/*",
       "!assets/*"
     ],
-    "mac":{
+    "mac": {
       "category": "public.app-category.developer-tools",
       "icon": "assets/icon.icns",
-      "target": "default"
+      "target": "default",
+      "type": "distribution",
+      "publish" : {
+        "provider": "github",
+        "repo": "https://github.com/typerror/zen-board",
+        "owner": "typerror",
+        "vPrefixedTagName": true,
+        "host": "github.com",
+        "protocol": "https",
+        "releaseType": "release",
+        "publishAutoUpdate": true
+      }
     }
   }
 }
