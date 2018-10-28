@@ -5,6 +5,7 @@ module.exports = {
 const { Menu, shell } = require("electron");
 const electron = require("electron");
 const config = require("./config");
+const updater = require("./updater");
 const app = electron.app;
 
 let menu;
@@ -29,7 +30,8 @@ function setMainMenu() {
         },
         {
           //TODO updater module
-          label: "Check for Updates..."
+          label: "Check Updates...",
+          click: () => updater.checkForUpdates()
         },
         {
           type: "separator"
@@ -128,9 +130,7 @@ function setMainMenu() {
         {
           label: "New",
           accelerator: "Cmd+Shit+N",
-          click() {
-            createWindow();
-          }
+          click: () => createWindow()
         },
         {
           role: "minimize"
@@ -144,39 +144,27 @@ function setMainMenu() {
       role: "help",
       submenu: [
         {
-          label: "Documentation",
-
-          click() {
-            shell.openExternal("https://help.zenhub.com/support/home");
-          }
+          label: "Learn more about " + config.APP_NAME,
+          click: () => shell.openExternal(config.HOME_PAGE_URL)
         },
         {
-          label: "Learn More",
-
-          click() {
-            shell.openExternal(
-              "https://github.com/typerror/zen-board#readme.md"
-            );
-          }
+          label: "Contribute on GitHub",
+          click: () => shell.openExternal(config.GITHUB_URL)
         },
         {
-          label: "Search Issues",
-
-          click() {
-            shell.openExternal("https://github.com/typerror/zen-board/issues");
-          }
+          label: "Report an Issue...",
+          click: () => shell.openExternal(config.GITHUB_URL_ISSUES)
         },
         {
           type: "separator"
         },
         {
+          label: "Documentation",
+          click: () => shell.openExternal(config.ZENHUB_URL_SUPPORT)
+        },
+        {
           label: "Getting Started",
-
-          click() {
-            shell.openExternal(
-              "https://help.zenhub.com/support/solutions/43000042875"
-            );
-          }
+          click: () => shell.openExternal(config.ZENHUB_URL_GETTING_STARTED)
         }
       ]
     }
