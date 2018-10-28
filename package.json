@@ -68,7 +68,7 @@
     "asar": true,
     "productName": "ZenBoard",
     "artifactName": "${productName}-${version}.${ext}",
-    "buildVersion": "${version}",
+    "buildVersion": "0.0.2",
     "copyright": "Copyright © 2018 typerror",
     "files": [
       "**/*",
