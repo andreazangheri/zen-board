@@ -16,8 +16,11 @@ module.exports = {
   GITHUB_URL: "https://github.com/typerror/zen-board",
   GITHUB_URL_ISSUES: "https://github.com/typerror/zen-board/issues",
   GITHUB_URL_RAW: "https://raw.githubusercontent.com/typerror/zen-board/master",
+  ZENHUB_URL_SUPPORT: "https://help.zenhub.com/support/home",
+  ZENHUB_URL_GETTING_STARTED:
+    "https://help.zenhub.com/support/solutions/43000042875",
 
-  HOME_PAGE_URL: "https://google.com",
+  HOME_PAGE_URL: "https://github.com/typerror/zen-board#readme.md",
 
   ROOT_PATH: __dirname,
   ASSETS_PATH: path.join(__dirname, "../assets"),
