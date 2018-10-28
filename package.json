@@ -10,9 +10,12 @@
     "build:css": "postcss src/style.css -o src/style.css",
     "build:js": "babel ./main/*.js -o ./build/index.js",
     "build": "npm run build:css && npm run build:js",
-    "prettier-watch": "npm run prettier:dir && npm run prettier:subdir",
-    "prettier:dir": "onchange '**/*.{js,jsx,css}' -- prettier --write \"**/*.{js,jsx,css}\"",
-    "prettier:subdir": "onchange 'main/*.{js,jsx,css}' -- prettier --write \"main/*.{js,jsx,css}\"",
+    "prettier-watch": "npm run prettier-js && npm run prettier:subdir",
+    "prettier-js": "onchange '**/*.{js,jsx}' -- prettier --write \"**/*.{js,jsx}\"",
+    "prettier-css": "onchange './main/style/dark.css' -- prettier --write \"./main/style/dark.css\"",
+    "build-scss": "node-sass --include-path scss ./main/style/components/index.scss ./main/style/dark.css",
+    "watch-scss": "onchange './main/style/components/*.scss' -- npm run build:scss ",
+    "autoprefixer": "postcss -u autoprefixer -r ./main/style/dark.css",
     "lint": "eslint \"**/*.{js,jsx}\" --quiet",
     "prod": "electron-builder -m"
   },
@@ -43,6 +46,7 @@
     "eslint-plugin-compat": "^2.6.2",
     "eslint-plugin-prettier": "^3.0.0",
     "gulp": "^4.0.0",
+    "node-sass": "^4.9.4",
     "onchange": "^5.0.2",
     "prettier": "^1.14.3"
   },
