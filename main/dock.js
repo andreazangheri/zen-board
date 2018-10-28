@@ -1,7 +1,5 @@
 module.exports = {
-  downloadFinished,
-  init,
-  setBadge
+  init
 };
 
 var electron = require("electron");
