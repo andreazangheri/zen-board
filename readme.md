@@ -18,3 +18,13 @@
 </p>
 
 ## Install
+
+### Code Style
+
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-5e60ba.svg)](https://github.com/prettier/prettier)
+
+## License
+
+ZenBoard is not affiliated with ZenHub. All other trademarks and copyrights are property of their respective owners.
+
+MIT. Copyright (c) [typerror](https://github.com/typerror).
