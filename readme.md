@@ -13,7 +13,6 @@
   <a href="https://github.com/typerror/zen-board"><img src="https://img.shields.io/badge/macos-ZenBoard-5e60ba.svg" alt="zenBoard"></a>
   <a href="https://github.com/typerror/zen-board/releases"><img src="https://img.shields.io/github/release/typerror/zen-board.svg" alt="Release"></a>
   <a href="#"><img src="https://img.shields.io/github/commits-since/typerror/zen-board/latest.svg" alt="Commits since latest release"></a>
-  <a href="https://github.com/typerror/zen-board/issues"><img src="https://img.shields.io/github/issues/typerror/zen-board.svg" alt="Issues"></a>
   <a href="https://github.com/typerror/zen-board/license"><img src="https://img.shields.io/github/license/typerror/zen-board.svg" alt="License"></a>
 </p>
 
