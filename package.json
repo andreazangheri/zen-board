@@ -64,7 +64,8 @@
     "electron-updater": "^3.1.5",
     "menubar": "^5.2.3",
     "path": "^0.12.7",
-    "postcss-cli": "^6.0.1"
+    "postcss-cli": "^6.0.1",
+    "res": "^0.4.0"
   },
   "electronVersion": "3.0.6",
   "build": {
@@ -74,6 +75,9 @@
     "artifactName": "${productName}-${version}.${ext}",
     "buildVersion": "0.0.2",
     "copyright": "Copyright © 2018 typerror",
+    "directories": {
+      "output": "build"
+    },
     "files": [
       "**/*",
       "!assets/*"
@@ -85,8 +89,7 @@
       "type": "distribution",
       "publish": {
         "provider": "github",
-        "owner": "typerror",
-        "repo": "zen-board"
+        "private": false
       }
     }
   }
