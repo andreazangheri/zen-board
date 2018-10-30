@@ -16,13 +16,13 @@
   <a href="https://github.com/typerror/zen-board/license"><img src="https://img.shields.io/github/license/typerror/zen-board.svg" alt="License"></a>
 </p>
 
-## Install
+### Install
 
 ### Code Style
 
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-5e60ba.svg)](https://github.com/prettier/prettier)
 
-## License
+### License
 
 ZenBoard is not affiliated with ZenHub. All other trademarks and copyrights are property of their respective owners.
 

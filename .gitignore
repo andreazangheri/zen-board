@@ -125,5 +125,6 @@ typings/
 *.sketch
 
 dist/
+build/
 
 *.p12
