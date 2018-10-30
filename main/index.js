@@ -27,7 +27,8 @@ function createWindow() {
     icon: config.ICON_PATH,
     height: windowState.height,
     title: config.APP_NAME,
-    titleBarStyle: "default",
+    titleBarStyle: "default", //hidden
+    transparent: false,
     width: windowState.width
   });
 
@@ -36,6 +37,13 @@ function createWindow() {
 
   win.webContents.on("did-navigate-in-page", (e, url) => {
     zen.set("url", url);
+  });
+
+  const style = win.webContents;
+  style.on("did-finish-load", () => {
+    style.insertCSS(fs.readFileSync(config.STYLE_PATH_DARK, "utf8"));
+
+    win.show();
   });
   // Modulo Dock
   dock.init();
@@ -46,14 +54,8 @@ app.on("ready", () => {
   win = createWindow();
   // Modulo Menu
   menu.init();
-
-  const page = win.webContents;
-  page.on("dom-ready", () => {
-    page.insertCSS(fs.readFileSync(config.STYLE_PATH, "utf8"));
-
-    win.show();
-  });
 });
+
 // Terminiamo l'App quando tutte le finestre vengono chiuse.
 app.on("window-all-closed", () => {
   // Su macOS è comune che l'applicazione e la barra menù
