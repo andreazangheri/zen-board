@@ -5,9 +5,9 @@
 @import "./zencolor";
 
 body {
-  color: $romance;
+  color: $romance !important;
 }
 
 .zh-webapp {
-  background-color: $tuna;
+  background-color: $tuna !important;
 }

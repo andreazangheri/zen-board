@@ -1,29 +1,31 @@
 @import "./zencolor";
 
 .zhc-btn {
-  border: 1px solid $black-rock;
-  color: $romance;
+  border: 1px solid $black-rock !important;
+  color: $romance !important;
 }
 
-.zhc-btn--default, .zhc-btn--default.zhc-btn--disabled, .zhc-btn--default[disabled] {
-  background-color: $black-rock;
-  border-color: $romance;
+.zhc-btn--default,
+.zhc-btn--default.zhc-btn--disabled,
+.zhc-btn--default[disabled] {
+  background-color: $black-rock !important;
+  border-color: $romance !important;
 }
 
 .zhc-btn--topbar:hover {
-  background-color: $black-rock;
+  background-color: $black-rock !important;
 }
 
 .zhc-breadcrumbs__copy {
-  color: $solitude;
+  color: $solitude !important;
 }
 
 .zhc-breadcrumbs__divider {
-  color: $solitude;
+  color: $solitude !important;
 }
 
 .zhc-breadcrumbs__dropdown .zhc-selection-button:hover {
-  border-color: $black-rock;
+  border-color: $black-rock !important;
 }
 
 .zhc-icon--chevron-right {
@@ -35,10 +37,10 @@
 }
 
 .zhc-topbar {
-  background-color: $tuna;
-  border-bottom: 1px solid $black-rock;
+  background-color: $tuna !important;
+  border-bottom: 1px solid $black-rock !important;
 }
 
 .zhc-topbar__sidebar-toggle {
-  border-right: 1px solid $black-rock;
+  border-right: 1px solid $black-rock !important;
 }
