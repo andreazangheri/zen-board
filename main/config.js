@@ -25,5 +25,6 @@ module.exports = {
   ROOT_PATH: __dirname,
   ASSETS_PATH: path.join(__dirname, "../assets"),
   ICON_PATH: path.join(__dirname, "../assets/icon.icns"),
-  STYLE_PATH: path.join(__dirname, "./style/dark.css")
+  STYLE_PATH_LIGHT: path.join(__dirname, "./style/light.css"),
+  STYLE_PATH_DARK: path.join(__dirname, "./style/dark.css")
 };
