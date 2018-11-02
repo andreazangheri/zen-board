@@ -49,7 +49,7 @@ app.on("ready", () => {
 
   const page = win.webContents;
   page.on("dom-ready", () => {
-    page.insertCSS(fs.readFileSync(config.STYLE_PATH, "utf8"));
+    page.insertCSS(fs.readFileSync(config.STYLE_PATH_DARK, "utf8"));
 
     win.show();
   });
