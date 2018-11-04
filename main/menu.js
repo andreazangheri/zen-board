@@ -5,7 +5,10 @@ module.exports = {
 const { Menu, shell } = require("electron");
 const electron = require("electron");
 const config = require("./config");
+const fs = require("fs");
+const path = require("path");
 const updater = require("./updater");
+const index = require("./index");
 const app = electron.app;
 
 let menu;
@@ -30,8 +33,33 @@ function setMainMenu() {
         },
         {
           //TODO updater module
-          label: "Check Updates...",
+          label: "Check for Updates...",
           click: () => updater.checkForUpdates()
+        },
+        {
+          type: "separator"
+        },
+        {
+          //TODO themes — light & dark
+          label: "Themes",
+          submenu: [
+            {
+              label: "Light",
+              click: () => {
+                index.style.insertCSS(
+                  fs.readFileSync(config.STYLE_PATH_LIGHT, "utf8")
+                );
+              }
+            },
+            {
+              label: "Dark",
+              click: () => {
+                index.style.insertCSS(
+                  fs.readFileSync(config.STYLE_PATH_DARK, "utf8")
+                );
+              }
+            }
+          ]
         },
         {
           type: "separator"
@@ -59,6 +87,10 @@ function setMainMenu() {
           role: "quit"
         }
       ]
+    },
+    {
+      label: "Workspaces",
+      submenu: []
     },
     {
       label: "Edit",
