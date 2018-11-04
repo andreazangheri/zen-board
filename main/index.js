@@ -27,7 +27,6 @@ function createWindow() {
     icon: config.ICON_PATH,
     height: windowState.height,
     title: config.APP_NAME,
-    titleBarStyle: "default",
     width: windowState.width
   });
 
